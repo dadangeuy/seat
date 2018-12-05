@@ -52,6 +52,9 @@
                                     <li>
                                         <a href="{{route('faq')}}"> <span>FAQ</span> </a>
                                     </li>
+                                    <li>
+                                        <a href="{{route('promotion')}}"> <span>Promotion</span> </a>
+                                    </li>
                                     @guest
                                         <li><a href="{{ route('login') }}">Login</a></li>
                                     @else
@@ -132,23 +135,6 @@
             
         @yield('content')
         <!-- TS145666755314695 -->
-        <section class="testimonials-container">
-            <div class="container">
-                <div class="col-md-12">
-                    <div class="testimonials carousel slide" data-interval="8000">
-                        <div class="carousel-inner">
-                            <div class="item active">
-                                <blockquote>
-                                    <p>
-                                        Dengan Seat Kita Bisa dengan mudah pesan Restoran / Kafe tanpa harus repot - repot kesana . <br> Dengan Seat juga kita bisa memilih tempat yang kita suka dengan mudah
-                                    </p> <small> <cite>Tayar Sutayar</cite> - KM ITS
-</small> </blockquote>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <section class="footer-widgets">
             <div class="container">
                 <div class="row">

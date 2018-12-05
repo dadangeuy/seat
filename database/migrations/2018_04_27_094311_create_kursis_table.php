@@ -18,6 +18,7 @@ class CreateKursisTable extends Migration
             $table->integer('restoran_id');
             $table->string('name');
             $table->integer('kapasitas');
+            $table->integer('harga');
             $table->timestamps();
         });
     }

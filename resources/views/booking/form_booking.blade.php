@@ -114,7 +114,7 @@
                 $.get(url+'/'+tanggal+'/'+dari+'/'+hingga, function (data) {
                     if(data.length!=0){
                         for (var i=0;i< data.length;i++) { 
-                            print = print + '<option value="'+data[i].id+'">'+data[i].name+' ('+data[i].kapasitas+' orang)</option>'
+                            print = print + '<option value="'+data[i].id+'">'+data[i].name+' ('+data[i].kapasitas+' orang) Rp.'+data[i].harga+'</option>'
                         }
                     }
                     else {

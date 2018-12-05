@@ -10,6 +10,8 @@ use App\User;
 use App\Booking;
 use Response;
 use Auth;
+use DateTime;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -66,6 +68,17 @@ class BookingController extends Controller
         	return back()->with('error', trans('Saldo E-Wallet Anda Tidak Cukup. Minimal 25000 '));
         }
 
+        $date_now = date("Y-m-d");
+        if($request->tanggal < $date_now ){
+            return back()->with('error', trans('Tanggal sudah lewat'));
+        }
+        $to = Carbon::createFromFormat('H:i', $request->hingga);
+        $from = Carbon::createFromFormat('H:i', $request->dari);
+        $diff_in_minutes = $to->diffInMinutes($from);
+        if($diff_in_minutes > 180){
+            return back()->with('error', trans('Durasi pesan meja tidak boleh lebih dari 3 jam '));
+        }
+
     	$booking = [
     		'biodatauser_id' => $biodata->id,
     		'biodatarestoran_id' => $request->biodatarestoran_id,
@@ -99,14 +112,20 @@ class BookingController extends Controller
             return redirect(route('dashboard'))->with('error', trans('Anda Tidak Punya otoritas untuk mengakses halaman ini'));
         }
         $booking = Booking::find($id);
+        $date_now = date("Y-m-d");
+        $current = Carbon::now('Asia/Jakarta');
+        $current_time = $current->format('H:i');
+        $diff_in_minutes = (round((strtotime($current) - strtotime($booking->jam_mulai)) /60));
+        if ($booking->tanggal >= $date_now && $diff_in_minutes > 120){
         $booking->status = 'fail';
         $biodata = BiodataUser::where('user_id',Auth::user()->id)->first();
         if ($booking->save()){
-    		$biodata->balance = $biodata->balance + 25000;
-        	$biodata->save();
+            $biodata->balance = $biodata->balance + 25000;
+            $biodata->save();
             return redirect(route('booking_history'))->with('success', trans('Booking Berhasil Dibatalkan'));
         }
-        else return back()->with('error', trans('Booking Gagal'));
+        }
+        else return back()->with('error', trans('Pembatalan Booking Gagal, Sudah 2 Jam Sebelum Jam Mulai Booking'));
 	}
 
 }

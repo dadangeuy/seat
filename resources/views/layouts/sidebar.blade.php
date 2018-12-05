@@ -21,6 +21,7 @@
             @if(Auth::user()->hasRole('admin'))
                <li> <a href="{{route('admin_verifikasi_restoran')}}"><i class="entypo-user"></i><span class="title">Verifikasi Restoran</span></a> </li>
                 <li> <a href="{{route('admin_verifikasi_topup')}}"><i class="entypo-doc-text-inv"></i><span class="title">Verifikasi Top Up</span></a> </li>
+                <li> <a href="{{route('home')}}"><span class="title">Kembali ke Home</span></a> </li>
 
             @elseif(Auth::user()->hasRole('restoran'))
                 <li> <a href="{{route('biodata_restoran_index')}}"><i class="entypo-user"></i><span class="title">Biodata Restoran</span></a> </li>

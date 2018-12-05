@@ -20,6 +20,7 @@
                 <tr>
                     <th>Nama Tempat Duduk</th>
                     <th>Jumlah Kapasitas</th>
+                    <th>Harga</th>
                     <th style="width: 45%">Actions</th>
                 </tr>
             </thead>
@@ -29,6 +30,7 @@
                 <tr>
                     <td>{{$kursis->name}}</td>
                     <td>{{$kursis->kapasitas}} orang</td>
+                    <td>Rp. {{$kursis->harga}}</td>
                     <td>
                         <button class="btn btn-default btn-sm btn-icon icon-left edit-modal" value="{{route('kursi_find',$kursis->id)}}" > <i class="entypo-pencil"></i> Edit
                         </button>
@@ -130,6 +132,12 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="harga" class="col-md-5 control-label">Harga</label>
+                                    <div class="col-md-7">
+                                        <input id="harga" type="number" class="form-control" name="harga" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <div class="col-md-12 button-submit">
                                         <button type="submit" class="btn btn-primary pull-right">
                                             Tambah Tempat Duduk Baru
@@ -165,6 +173,12 @@
                                     <label for="kapasitas_edit" class="col-md-5 control-label">Kapasitas</label>
                                     <div class="col-md-7">
                                         <input id="kapasitas_edit" type="number" class="form-control" name="kapasitas_edit" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="harga_edit" class="col-md-5 control-label">Harga</label>
+                                    <div class="col-md-7">
+                                        <input id="harga_edit" type="number" class="form-control" name="harga_edit" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -218,6 +232,7 @@
                     $('#id_edit').val(data.id);
                     $('#name_edit').val(data.name);
                     $('#kapasitas_edit').val(data.kapasitas);
+                    $('#harga_edit').val(data.harga);
                     $('#edit').modal('show');
                 }) 
             });

@@ -65,6 +65,7 @@ class KursiController extends Controller
     		'restoran_id' => $restoran->id,
     		'name' => $request->name,
     		'kapasitas' => $request->kapasitas,
+            'harga' => $request->harga,
     		];
     	$success = Kursi::create($data_kursi);
 
@@ -111,6 +112,7 @@ class KursiController extends Controller
 
     	$data->name = $request->name_edit;
     	$data->kapasitas = $request->kapasitas_edit;
+        $data->harga = $request->harga_edit;
 
     	if ($data->save()){
             $restoran->lengkap = 0;

@@ -20,6 +20,7 @@ Route::prefix('/')->group(function () {
     Route::get('/about_us', 'HomeController@about_us')->name('about_us');
     Route::get('/blog', 'HomeController@blog')->name('blog');
     Route::get('/faq', 'HomeController@faq')->name('faq');
+    Route::get('/promotion', 'HomeController@promotion')->name('promotion');
     
 });
 

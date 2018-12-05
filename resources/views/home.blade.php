@@ -90,6 +90,23 @@
                 </div>
             </div>
         </section>
+        <section class="testimonials-container">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="testimonials carousel slide" data-interval="8000">
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <blockquote>
+                                    <p>
+                                        Dengan Seat Kita Bisa dengan mudah pesan Restoran / Kafe tanpa harus repot - repot kesana . <br> Dengan Seat juga kita bisa memilih tempat yang kita suka dengan mudah
+                                    </p> <small> <cite>Tayar Sutayar</cite> - KM ITS
+</small> </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 @endsection
 @section('additional_js')
     <!-- insert your additional js here -->
